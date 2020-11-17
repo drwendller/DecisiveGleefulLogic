@@ -1,4 +1,4 @@
-using System;
+/*using System;
 class Batata3Class
 {
   enum DiasSemanas {domingo,segunda,terca,quarta,quinta,sexta,sabado};
@@ -11,4 +11,4 @@ class Batata3Class
     int b = (int)DiasSemanas.segunda;
     Console.WriteLine (b);
   }
-}
+}*/

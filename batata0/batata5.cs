@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -92,10 +92,10 @@ class escola
     {
         Console.WriteLine("qual o nome da escolar do aluno que deseja cadastrar?");
         NomeDaEscola = Console.ReadLine();  
-        Console.Clear();
     }
     public void PeriodoEscolar()
     {
+        Console.Clear();
         Console.WriteLine("qual periodo escolar do aluno que deseja cadastrar?\ndigite:\n1-ensino fundamenta I\n2-ensino fundamental II\n3-ensino medio");
         SouUmaString  = Console.ReadLine();
         EnsinoEscolar = int.Parse(SouUmaString);
@@ -105,17 +105,17 @@ class escola
             Console.WriteLine("erro...nao existe {0}",EnsinoEscolar);
             PeriodoEscolar();
         }
-        Console.Clear();
     }
     public void AnoLetivo()
     {
+        Console.Clear();
         Console.WriteLine("qual o ano escolar do aluno que deseja cadastrar?");
         SouUmaString = Console.ReadLine();
         AnoEscolar = int.Parse(SouUmaString);
         if(EnsinoEscolar == 1)
         {   
             EnsinoEscolarString = "Ensino Fundamental I";
-            while(AnoEscolar < 1 || AnoEscolar > 5)
+            while(AnoEscolar > 5)
             {
                 Console.Clear();
                 Console.WriteLine("erro...O Ensino Fundamental I fica entre o 1°-5º ano nao o {0}º ano",AnoEscolar);
@@ -124,7 +124,7 @@ class escola
         }else if(EnsinoEscolar == 2)
         {
             EnsinoEscolarString = "Ensino Fundamental II";
-            while(AnoEscolar < 6 || AnoEscolar > 9)
+            while(AnoEscolar > 9)
             {
                 Console.Clear();
                 Console.WriteLine("erro...O Ensino Fundamental II fica entre o 6°-9º ano nao o {0}º ano",AnoEscolar);
@@ -133,7 +133,7 @@ class escola
         }else if(EnsinoEscolar == 3)
         {
             EnsinoEscolarString = "Ensino Medio";
-            while(AnoEscolar < 1 || AnoEscolar > 3)
+            while(AnoEscolar > 3)
             {
                 Console.Clear();
                 Console.WriteLine("erro...O Ensino Medio fica entre o 1º-3º ano nao o {0}º ano",AnoEscolar);
@@ -147,10 +147,10 @@ class escola
         Console.WriteLine("qual a turma do aluno que deseja cadastrar?");
         SouUmaString  = Console.ReadLine();
         turma = char.Parse(SouUmaString);
-        Console.Clear();
     }
     public void TurnoEscolar()
     {
+        Console.Clear();
         Console.WriteLine("qual o turno do aluno que deseja cadastrar?\ndigite:\n1-matutino\n2-vespertino\n3-noturno\n4-integral");
         SouUmaString  = Console.ReadLine();
         turno = int.Parse(SouUmaString);
@@ -219,28 +219,28 @@ class escola
 class login
 {
     //atributos
-    private string senha1,senha2;
-    private int NumeroDaMatricula1,NumeroDaMatricula2;
+    private string senha;
+    private int NumeroDaMatricula;
     public string SouString;
     public string SouStringM;
     public int numero;
     escola es = new escola();
     aluno pegar = new aluno();
     //metodos
-    public void CadastroSenha(string senha1)
+    public void CadastroSenha(string senha)
     {
         Console.WriteLine("digite uma senha:");
         Console.WriteLine("A senha do aluno tem que ser 8-20 caracteres, pelo menos um numero, uma letra maiuscula, uma letra minusula e um caractere especial");
-        senha1 = Console.ReadLine();
-        if(senha1.Length < 8 || senha1.Length > 20 /*quantidade*/ || !senha1.Any(c => char.IsDigit(c))/*numero*/ || !senha1.Any(c => char.IsUpper(c))/*maiuscula*/ || !senha1.Any(c => char.IsLower(c))/*minuscula*/ || !(senha1.Any(c => char.IsLetter(c) || char.IsDigit(c)))/*caractere especial*/ || !senha1.Any(c => char.IsSymbol(c))/*caractere especial*/)
-        {
+        senha = Console.ReadLine();
+        if(senha.Length < 8 || senha.Length > 20 /*quantidade*/ //|| !senha.Any(c => char.IsDigit(c))/*numero*/ || !senha.Any(c => char.IsUpper(c))/*maiuscula*/ || !senha.Any(c => char.IsLower(c))/*minuscula*/ || !(senha.Any(c => char.IsLetter(c) || char.IsDigit(c)))/*caractere especial*/ || !senha.Any(c => char.IsSymbol(c))/*caractere especial*/)
+        /*{
             Console.Clear();
             Console.WriteLine("erro....");
-            CadastroSenha(senha1);
+            CadastroSenha(senha);
         }
         var contadorRepetido = 0;//caractere repetido 
         var ultimoCaracter = '\0'; 
-        foreach(var c in senha1)
+        foreach(var c in senha)
         { 
             if (c == ultimoCaracter)
             {
@@ -253,28 +253,25 @@ class login
             {
                 Console.Clear();
                 Console.WriteLine("erro... a senha do aluno nao pode ter caractere repidido mais do que 2 vezes");
-                CadastroSenha(senha1); 
+                CadastroSenha(senha); 
                 ultimoCaracter = c; 
             }
         } 
     }
-    public void EntrarSenha(string senha2)
+    public void EntrarSenha(string senha)
     {
         Console.WriteLine("digite a senha do aluno:");
         Console.WriteLine("A senha do aluno tem que ser 8-20 caracteres, pelo menos um numero, uma letra maiuscula, uma letra minusula e um caractere especial");
-        senha2 = Console.ReadLine();
-        if(senha2.Length < 8 || senha2.Length > 20/*quantidade*/ || !senha2.Any(c => char.IsDigit(c))/*numero*/ || !senha2.Any(c => char.IsUpper(c))/*maiuscula*/ || !senha2.Any(c => char.IsLower(c))/*minuscula*/ || !(senha2.Any(c => char.IsLetter(c) || char.IsDigit(c)))/*caractere especial*/ || !senha2.Any(c => char.IsSymbol(c))/*caractere especial*/)
-        {
+        senha = Console.ReadLine();
+        if(senha.Length < 8 || senha.Length > 20/*quantidade*/ //|| !senha.Any(c => char.IsDigit(c))/*numero*/ || !senha.Any(c => char.IsUpper(c))/*maiuscula*/ || !senha.Any(c => char.IsLower(c))/*minuscula*/ || !(senha.Any(c => char.IsLetter(c) || char.IsDigit(c)))/*caractere especial*/ || !senha.Any(c => char.IsSymbol(c))/*caractere especial*/)
+        /*{
             Console.Clear();
-            if(senha2 != senha1)
-            {
-                Console.WriteLine("erro...");
-                CadastroSenha(senha2);
-            }
+            Console.WriteLine("erro....");
+            CadastroSenha(senha);
         }
         var contadorRepetido = 0;//caractere repetido 
         var ultimoCaracter = '\0'; 
-        foreach(var c in senha2)
+        foreach(var c in senha)
         { 
             if (c == ultimoCaracter)
             {
@@ -287,7 +284,7 @@ class login
             {
                 Console.Clear();
                 Console.WriteLine("erro... a senha do aluno nao pode ter caractere repidido mais do que 2 vezes");
-                CadastroSenha(senha2); 
+                CadastroSenha(senha); 
                 ultimoCaracter = c; 
             }
         } 
@@ -295,28 +292,24 @@ class login
     public void CadastroNumeroDaMatricula()
     {
         Random gerador = new Random();
-        int NumeroDaMatricula1 = gerador.Next(100000000,1000000000);
-        Console.WriteLine("o numero da matricula do aluno {0} e {1}",pegar.getNome(),NumeroDaMatricula1);
+        int NumeroDaMatricula = gerador.Next(10^9,9*(10^9));
+        Console.WriteLine("o numero da matricula do aluno {0} e {1}",pegar.getNome(),NumeroDaMatricula);
     }
     public void EntrarNumeroDaMatricula()
     {
         Console.WriteLine("digite o numero da matricula do aluno:");
         SouStringM = Console.ReadLine();
-        NumeroDaMatricula2 = int.Parse(SouStringM);
-        if(NumeroDaMatricula2 < 100000000 || NumeroDaMatricula2 > 1000000000)
+        NumeroDaMatricula = int.Parse(SouStringM);
+        if(NumeroDaMatricula < 1000000000 || NumeroDaMatricula > 9999999999)
         {
             Console.Clear();
-            Console.WriteLine("erro... o numero da matricula do aluno tem que ter 9 caracteres");
-            if(NumeroDaMatricula2 != NumeroDaMatricula1)
-            {
-                Console.WriteLine("erro... Nao existe este numero de matricula");
-                EntrarNumeroDaMatricula();
-            }
+            Console.WriteLine("erro... o numero da matricula do aluno tem que ser igual a 10 caracteres");
+            EntrarNumeroDaMatricula();
         }
     }
     public void MatriculaDoAluno()
     {
-        Console.WriteLine("digite:\n1.Entrar....(ver registro do aluno)\n2.Cadastrar.(aluno)\n3.Sair");
+        Console.WriteLine("digite:\n1.Entrar(ver registro)\n2.Cadastrar\n3.Sair");
         SouString = Console.ReadLine();
         numero = int.Parse(SouString);
         switch(numero)
@@ -325,7 +318,7 @@ class login
             while(true) 
             {   
                 Console.Clear();
-                EntrarSenha(senha2);
+                EntrarSenha(senha);
                 Console.Clear();
                 EntrarNumeroDaMatricula();
                 Console.Clear();
@@ -334,8 +327,8 @@ class login
                 var DesejaCadastrar = Console.ReadLine();
                 if(DesejaCadastrar.ToUpper() == "NAO")
                 {
-                    Console.Clear();
-                    MatriculaDoAluno();
+                Console.Clear();
+                MatriculaDoAluno();
                 }
             }
             case 2:
@@ -348,7 +341,7 @@ class login
                 Console.Clear();
                 es.matricula();
                 Console.Clear();
-                CadastroSenha(senha1);
+                CadastroSenha(senha);
                 Console.Clear();
                 CadastroNumeroDaMatricula();
                 Console.WriteLine("Deseja cadastrar um novo aluno? [Sim/Nao]");
@@ -370,37 +363,21 @@ class login
         }
     }
     //metodos especiais
-    public string getSenha1()
+    public string getSenha()
     {
-        return this.senha1;
+        return this.senha;
     }
-    public void setSenha1(string sa1)
+    public void setMateria(string sa)
     {
-        this.senha1 = sa1;
+        this.senha = sa;
     }
-    public int getNumeroDaMatricula1()
+    public int getNumeroDaMatricula()
     {
-        return this.NumeroDaMatricula1;
+        return this.NumeroDaMatricula;
     }
-    public void setNumeroDaMatricula1(int nm1)
+    public void setNumeroDaMatricula(int nm)
     {
-        this.NumeroDaMatricula1 = nm1;
-    }
-    public string getSenha2()
-    {
-        return this.senha2;
-    }
-    public void setSenha2(string sa2)
-    {
-        this.senha2 = sa2;
-    }
-    public int getNumeroDaMatricula2()
-    {
-        return this.NumeroDaMatricula2;
-    }
-    public void setNumeroDaMatricula2(int nm2)
-    {
-        this.NumeroDaMatricula2 = nm2;
+        this.NumeroDaMatricula = nm;
     }
 }
 class Program
@@ -411,4 +388,4 @@ class Program
         
         lo.MatriculaDoAluno();
     } 
-}
+}*/

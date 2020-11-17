@@ -1,4 +1,4 @@
-using System;
+/*using System;
 class Batata2Class
 {
   public static void Batata2 (string[] args)
@@ -7,4 +7,4 @@ class Batata2Class
     num=num<<1;
     Console.WriteLine (num);
   }
-}
+}*/
